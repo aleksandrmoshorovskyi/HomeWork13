@@ -35,7 +35,6 @@ class FavoriteViewController: UIViewController {
         contentView.tableView.dataSource = self
         contentView.tableView.delegate = self
         
-        //реєстрація комірки реалізованої в коді
         contentView.tableView.register(
             FavoriteTableViewCell.self,
             forCellReuseIdentifier: FavoriteTableViewCell.idintifier)
@@ -59,6 +58,7 @@ extension FavoriteViewController: FavoriteViewDelegate {
 extension FavoriteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return model.favoriteItems.count
     }
     

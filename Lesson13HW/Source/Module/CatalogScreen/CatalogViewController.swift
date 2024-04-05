@@ -57,6 +57,7 @@ extension CatalogViewController: CatalogViewDelegate {
 extension CatalogViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return model.pcItems.count
     }
     
