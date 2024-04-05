@@ -19,11 +19,10 @@ class CatalogModel {
     private let localStorage = LocalStorageService()
     
     var pcItems: [Pc] = []
-    var favoriteItems: [Favorite] = []
     
     func setFavoritesFor() {
     
-        favoriteItems = localStorage.getFavorites()
+        let favoriteItems = localStorage.getFavorites()
         var savedIDs: [Int] = []
         
         for favoriteItem in favoriteItems {
