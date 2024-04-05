@@ -48,10 +48,6 @@ class CatalogModel {
         }
     }
     
-//    func removeFromFavorite(at index: Int) {
-//        favoriteItems.remove(at: index)
-//    }
-    
     func updateItem(with isFavorite: Bool, at index: Int) {
         pcItems[index].isFavorite = isFavorite
     }
