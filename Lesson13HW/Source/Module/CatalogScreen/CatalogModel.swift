@@ -20,17 +20,12 @@ class CatalogModel {
     
     var pcItems: [Pc] = []
     
-    func setFavoritesFor() {
-    
+    func setFavorites() {
+        
         let favoriteItems = localStorage.getFavorites()
-        var savedIDs: [Int] = []
         
-        for favoriteItem in favoriteItems {
-            savedIDs.append(favoriteItem.id)
-        }
-        
-        for index in 0...pcItems.count - 1 {
-            if savedIDs.contains(pcItems[index].id) {
+        pcItems.enumerated().forEach { index, item in
+            if !favoriteItems.filter({ item.id == $0.id }).isEmpty {
                 pcItems[index].isFavorite = true
             }
         }
@@ -42,7 +37,8 @@ class CatalogModel {
             guard let self = self else { return }
             
             self.pcItems = catalog?.data ?? []
-            setFavoritesFor()
+            setFavorites()
+            
             self.delegate?.dataDidLoad()
         }
     }
