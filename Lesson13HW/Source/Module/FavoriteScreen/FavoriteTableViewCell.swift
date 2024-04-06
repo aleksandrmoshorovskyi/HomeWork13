@@ -12,8 +12,9 @@ class FavoriteTableViewCell: UITableViewCell {
     static let idintifier = "UITableViewCell"
     
     lazy var idLabel: UILabel = {
+        
         let label = UILabel()
-        //label.backgroundColor = .systemRed
+        //label.backgroundColor = Constant.labelColor
         
         contentView.addSubview(label)
         
@@ -21,8 +22,9 @@ class FavoriteTableViewCell: UITableViewCell {
     }()
     
     lazy var nameLabel: UILabel = {
+        
         let label = UILabel()
-        //label.backgroundColor = .systemRed
+        //label.backgroundColor = Constant.labelColor
         
         contentView.addSubview(label)
         
@@ -30,8 +32,9 @@ class FavoriteTableViewCell: UITableViewCell {
     }()
     
     lazy var mmLabel: UILabel = {
+        
         let label = UILabel()
-        //label.backgroundColor = .systemRed
+        //label.backgroundColor = Constant.labelColor
         
         contentView.addSubview(label)
         
@@ -40,7 +43,7 @@ class FavoriteTableViewCell: UITableViewCell {
     
     static func setHeightForCell() -> CGFloat {
         
-        return distance * 3 + height * 3
+        return (Constant.constraintDistance + Constant.lableHeight) * 3
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -51,29 +54,76 @@ class FavoriteTableViewCell: UITableViewCell {
     }
     
     func setConstraint() {
+        
         idLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         mmLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            idLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: distance),
-            idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: distance),
-            idLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -distance),
-            idLabel.heightAnchor.constraint(equalToConstant: height),
+            // MARK: - idLabel
+            idLabel.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: Constant.constraintDistance
+            ),
+            idLabel.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: Constant.constraintDistance
+            ),
+            idLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: contentView.trailingAnchor,
+                constant: -Constant.constraintDistance
+            ),
+            idLabel.heightAnchor.constraint(
+                equalToConstant: Constant.lableHeight
+            ),
             
-            nameLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: distance),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: distance),
-            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -distance),
-            nameLabel.heightAnchor.constraint(equalToConstant: height),
+            // MARK: - nameLabel
+            nameLabel.topAnchor.constraint(
+                equalTo: idLabel.bottomAnchor,
+                constant: Constant.constraintDistance
+            ),
+            nameLabel.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: Constant.constraintDistance
+            ),
+            nameLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: contentView.trailingAnchor,
+                constant: -Constant.constraintDistance
+            ),
+            nameLabel.heightAnchor.constraint(
+                equalToConstant: Constant.lableHeight
+            ),
             
-            mmLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: zero),
-            mmLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: distance),
-            mmLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -distance),
-            mmLabel.heightAnchor.constraint(equalToConstant: height)
+            // MARK: - mmLabel
+            mmLabel.topAnchor.constraint(
+                equalTo: nameLabel.bottomAnchor,
+                constant: Constant.zeroDistance
+            ),
+            mmLabel.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: Constant.constraintDistance
+            ),
+            mmLabel.trailingAnchor.constraint(
+                lessThanOrEqualTo: contentView.trailingAnchor,
+                constant: -Constant.constraintDistance
+            ),
+            mmLabel.heightAnchor.constraint(
+                equalToConstant: Constant.lableHeight
+            )
         ])
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private class Constant {
+    
+    static let constraintDistance: CGFloat = 20
+    static let lableHeight: CGFloat = 30
+    static let zeroDistance: CGFloat = 0
+    
+    static let labelColor: UIColor = .systemRed
 }

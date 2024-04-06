@@ -48,6 +48,7 @@ class CatalogModel {
     }
     
     func updateItem(with isFavorite: Bool, at index: Int) {
+        
         pcItems[index].isFavorite = isFavorite
     }
     

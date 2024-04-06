@@ -10,10 +10,12 @@ import UIKit
 class InitialViewController: UIViewController {
     
     @IBOutlet weak var contentView: InitialView!
+    
     var model: InitialModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupInitialState()
         model.loadTitles()
     }
@@ -21,6 +23,7 @@ class InitialViewController: UIViewController {
     // Інтерфс вже показано на екрані - викликається ця функція автоматично
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         contentView.startAnimation()
     }
     
@@ -38,6 +41,7 @@ class InitialViewController: UIViewController {
 extension InitialViewController: InitialModelDelegate {
     
     func titlesDidLoad(titles: [String]) {
+        
         contentView.setup(with: titles)
     }
 }

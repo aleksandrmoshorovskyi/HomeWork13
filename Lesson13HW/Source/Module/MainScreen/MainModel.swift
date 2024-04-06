@@ -15,6 +15,7 @@ protocol MainModelDelegate: AnyObject {
 class MainModel {
     
     class Section {
+        
         var items: [TaskItem] = []
     }
     

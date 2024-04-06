@@ -26,6 +26,7 @@ class FavoriteModel {
     }
     
     func removeFromFavorite(at index: Int) {
+        
         favoriteItems.remove(at: index)
     }
     
